@@ -18,7 +18,7 @@
 --
 -- Table structure for table `Clerk`
 --
-CREATE DATABASE IF NOT EXISTS `Transportation-System`;
+CREATE DATABASE `Transportation-System`;
 
 USE `Transportation-System`;
 
@@ -141,10 +141,10 @@ DROP TABLE IF EXISTS `Person`;
 CREATE TABLE `Person` (
   `NID` int(11) NOT NULL,
   `Phone_No` int(11) NOT NULL,
-  `Email` varchar(150) NOT NULL,
-  `DOB` date NOT NULL,
-  `Gender` tinyint(1) NOT NULL,
-  `Password` varchar(150) NOT NULL,
+  `Email` int(11) NOT NULL,
+  `DOB` int(11) NOT NULL,
+  `Gender` int(11) NOT NULL,
+  `PPassword` int(11) NOT NULL,
   PRIMARY KEY (`NID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -268,16 +268,15 @@ DROP TABLE IF EXISTS `Trip`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Trip` (
-  `TripID` int(11) NOT NULL AUTO_INCREMENT,
   `TrainID` int(11) NOT NULL,
   `DepartureTime` TIME NOT NULL,
   `ArrivalTime` TIME NOT NULL,
-  `DepartureDate` DATE NOT NULL,
+  `TripID` int(11) NOT NULL AUTO_INCREMENT,
   `sourceStation` int(11) NOT NULL,
   `destinationStation` int(11) NOT NULL,
   PRIMARY KEY (`TripID`),
-  FOREIGN KEY (`sourceStation`) REFERENCES `Station`(`StationID`),
-  FOREIGN KEY (`destinationStation`) REFERENCES `Station`(`StationID`)
+  KEY `sourceStation` (`sourceStation`),
+  KEY `destinationStation` (`destinationStation`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
