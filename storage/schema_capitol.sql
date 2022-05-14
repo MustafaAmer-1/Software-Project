@@ -27,8 +27,8 @@ DROP TABLE IF EXISTS `Clerk`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Clerk` (
   `Station` int(11) NOT NULL,
-  `Start_time` int(11) NOT NULL,
-  `End_time` int(11) NOT NULL,
+  `Start_time` Time NOT NULL,
+  `End_time` Time NOT NULL,
   `NID` int(11) NOT NULL,
   PRIMARY KEY (`NID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -220,7 +220,7 @@ DROP TABLE IF EXISTS `Station`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Station` (
   `StationID` int(11) NOT NULL,
-  `SName` int(11) NOT NULL,
+  `SName` varchar(150) NOT NULL,
   PRIMARY KEY (`StationID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -244,7 +244,7 @@ DROP TABLE IF EXISTS `Ticket`;
 CREATE TABLE `Ticket` (
   `Ticket_ID` int(11) NOT NULL,
   `Price` int(11) NOT NULL,
-  `TDate` int(11) NOT NULL,
+  `TDate` Date NOT NULL,
   `TripID` int(11) NOT NULL,
   PRIMARY KEY (`Ticket_ID`),
   KEY `TripID` (`TripID`)
@@ -269,14 +269,14 @@ DROP TABLE IF EXISTS `Trip`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Trip` (
   `TrainID` int(11) NOT NULL,
-  `DepartureTime` int(11) NOT NULL,
-  `ArrivalTime` int(11) NOT NULL,
-  `TripID` int(11) NOT NULL,
-  `StationID` int(11) NOT NULL,
-  `TOStationID` int(11) NOT NULL,
+  `DepartureTime` TIME NOT NULL,
+  `ArrivalTime` TIME NOT NULL,
+  `TripID` int(11) NOT NULL AUTO_INCREMENT,
+  `sourceStation` int(11) NOT NULL,
+  `destinationStation` int(11) NOT NULL,
   PRIMARY KEY (`TripID`),
-  KEY `StationID` (`StationID`),
-  KEY `TOStationID` (`TOStationID`)
+  KEY `sourceStation` (`sourceStation`),
+  KEY `destinationStation` (`destinationStation`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
