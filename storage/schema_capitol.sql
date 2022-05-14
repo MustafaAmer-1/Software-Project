@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS `Station`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Station` (
   `StationID` int(11) NOT NULL,
-  `Sname` int(11) NOT NULL,
+  `Sname` varchat(20) NOT NULL,
   PRIMARY KEY (`StationID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -187,6 +187,7 @@ DROP TABLE IF EXISTS `Trip`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Trip` (
   `TripID` int(11) NOT NULL AUTO_INCREMENT,
+  `DepartureDate` date NOT NULL,
   `DepartureTime` time NOT NULL,
   `ArrivalTime` time NOT NULL,
   `StationID` int(11) NOT NULL,
