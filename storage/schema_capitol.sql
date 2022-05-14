@@ -29,7 +29,7 @@ CREATE TABLE `Clerk` (
   `Station` int(11) NOT NULL,
   `Start_time` Time NOT NULL,
   `End_time` Time NOT NULL,
-  `NID` int(11) NOT NULL,
+  `NID` int(16) NOT NULL,
   PRIMARY KEY (`NID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS `Client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Client` (
-  `NID` int(11) NOT NULL,
+  `NID` int(16) NOT NULL,
   PRIMARY KEY (`NID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -95,7 +95,7 @@ DROP TABLE IF EXISTS `Manager`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Manager` (
-  `NID` int(11) NOT NULL,
+  `NID` int(16) NOT NULL,
   PRIMARY KEY (`NID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -139,12 +139,13 @@ DROP TABLE IF EXISTS `Person`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Person` (
-  `NID` int(11) NOT NULL,
+  `NID` int(16) NOT NULL,
+  `Username` varchar(200) NOT NULL,
   `Phone_No` int(11) NOT NULL,
-  `Email` int(11) NOT NULL,
-  `DOB` int(11) NOT NULL,
+  `Email` varchar(200) NOT NULL,
+  `DOB` DATE NOT NULL,
   `Gender` int(11) NOT NULL,
-  `PPassword` int(11) NOT NULL,
+  `Password` varchar(200) NOT NULL,
   PRIMARY KEY (`NID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -220,7 +221,7 @@ DROP TABLE IF EXISTS `Station`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Station` (
   `StationID` int(11) NOT NULL,
-  `SName` varchar(150) NOT NULL,
+  `SName` varchar(200) NOT NULL,
   PRIMARY KEY (`StationID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
