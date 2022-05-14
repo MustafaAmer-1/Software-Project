@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.48-MariaDB, for debian-linux-gnu (x86_64)
+-- MariaDB dump 10.19  Distrib 10.4.24-MariaDB, for Linux (x86_64)
 --
--- Host: fdb34.awardspace.net    Database: 4098422_capitol
+-- Host: localhost    Database: Transportation-System
 -- ------------------------------------------------------
--- Server version	5.7.20-log
+-- Server version    10.4.24-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,7 +18,8 @@
 --
 -- Table structure for table `Clerk`
 --
-CREATE DATABASE `Transportation-System`;
+
+CREATE DATABASE IF NOT EXISTS `Transportation-System`;
 
 USE `Transportation-System`;
 
@@ -27,11 +28,12 @@ DROP TABLE IF EXISTS `Clerk`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Clerk` (
   `Station` int(11) NOT NULL,
-  `Start_time` Time NOT NULL,
-  `End_time` Time NOT NULL,
-  `NID` int(16) NOT NULL,
-  PRIMARY KEY (`NID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `Start_time` time NOT NULL,
+  `End_time` time NOT NULL,
+  `NID` bigint(20) NOT NULL,
+  PRIMARY KEY (`NID`),
+  CONSTRAINT `Clerk_ibfk_1` FOREIGN KEY (`NID`) REFERENCES `Person` (`NID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,50 +46,6 @@ LOCK TABLES `Clerk` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Client`
---
-
-DROP TABLE IF EXISTS `Client`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Client` (
-  `NID` int(16) NOT NULL,
-  PRIMARY KEY (`NID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Client`
---
-
-LOCK TABLES `Client` WRITE;
-/*!40000 ALTER TABLE `Client` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Client` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `Electronic_Ticket`
---
-
-DROP TABLE IF EXISTS `Electronic_Ticket`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Electronic_Ticket` (
-  `Ticket_ID` int(11) NOT NULL,
-  PRIMARY KEY (`Ticket_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Electronic_Ticket`
---
-
-LOCK TABLES `Electronic_Ticket` WRITE;
-/*!40000 ALTER TABLE `Electronic_Ticket` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Electronic_Ticket` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Manager`
 --
 
@@ -95,9 +53,10 @@ DROP TABLE IF EXISTS `Manager`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Manager` (
-  `NID` int(16) NOT NULL,
-  PRIMARY KEY (`NID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `NID` bigint(20) NOT NULL,
+  PRIMARY KEY (`NID`),
+  CONSTRAINT `Manager_ibfk_1` FOREIGN KEY (`NID`) REFERENCES `Person` (`NID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,28 +69,6 @@ LOCK TABLES `Manager` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Paper_Ticket`
---
-
-DROP TABLE IF EXISTS `Paper_Ticket`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Paper_Ticket` (
-  `Ticket_ID` int(11) NOT NULL,
-  PRIMARY KEY (`Ticket_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Paper_Ticket`
---
-
-LOCK TABLES `Paper_Ticket` WRITE;
-/*!40000 ALTER TABLE `Paper_Ticket` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Paper_Ticket` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Person`
 --
 
@@ -139,15 +76,15 @@ DROP TABLE IF EXISTS `Person`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Person` (
-  `NID` int(16) NOT NULL,
-  `Username` varchar(200) NOT NULL,
+  `NID` bigint(20) NOT NULL,
+  `Pname` varchar(120) NOT NULL,
   `Phone_No` int(11) NOT NULL,
-  `Email` varchar(200) NOT NULL,
-  `DOB` DATE NOT NULL,
-  `Gender` int(11) NOT NULL,
-  `Password` varchar(200) NOT NULL,
+  `Email` varchar(120) NOT NULL,
+  `DOB` date NOT NULL,
+  `Gender` tinyint(1) NOT NULL,
+  `Ppassword` varchar(120) NOT NULL,
   PRIMARY KEY (`NID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -171,10 +108,12 @@ CREATE TABLE `Seat` (
   `CarNo` int(11) NOT NULL,
   `TripID` int(11) NOT NULL,
   `Ticket_ID` int(11) NOT NULL,
-  PRIMARY KEY (`SeatID`,`TripID`,`Ticket_ID`),
+  PRIMARY KEY (`SeatID`,`TripID`),
   KEY `TripID` (`TripID`),
-  KEY `Ticket_ID` (`Ticket_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `Ticket_ID` (`Ticket_ID`),
+  CONSTRAINT `Seat_ibfk_1` FOREIGN KEY (`TripID`) REFERENCES `Trip` (`TripID`),
+  CONSTRAINT `Seat_ibfk_2` FOREIGN KEY (`Ticket_ID`) REFERENCES `Ticket` (`Ticket_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,32 +126,6 @@ LOCK TABLES `Seat` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Seat_bookedInterval`
---
-
-DROP TABLE IF EXISTS `Seat_bookedInterval`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Seat_bookedInterval` (
-  `bookedInterval` int(11) NOT NULL,
-  `SeatID` int(11) NOT NULL,
-  `TripID` int(11) NOT NULL,
-  `Ticket_ID` int(11) NOT NULL,
-  PRIMARY KEY (`bookedInterval`,`SeatID`,`TripID`,`Ticket_ID`),
-  KEY `SeatID` (`SeatID`,`TripID`,`Ticket_ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `Seat_bookedInterval`
---
-
-LOCK TABLES `Seat_bookedInterval` WRITE;
-/*!40000 ALTER TABLE `Seat_bookedInterval` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Seat_bookedInterval` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `Station`
 --
 
@@ -221,9 +134,9 @@ DROP TABLE IF EXISTS `Station`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Station` (
   `StationID` int(11) NOT NULL,
-  `SName` varchar(200) NOT NULL,
+  `Sname` int(11) NOT NULL,
   PRIMARY KEY (`StationID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,13 +156,17 @@ DROP TABLE IF EXISTS `Ticket`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Ticket` (
-  `Ticket_ID` int(11) NOT NULL,
+  `Ticket_ID` int(11) NOT NULL AUTO_INCREMENT,
   `Price` int(11) NOT NULL,
-  `TDate` Date NOT NULL,
+  `TDate` date NOT NULL,
   `TripID` int(11) NOT NULL,
+  `Owner_NID` bigint(20) NOT NULL,
   PRIMARY KEY (`Ticket_ID`),
-  KEY `TripID` (`TripID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `TripID` (`TripID`),
+  KEY `Owner_NID` (`Owner_NID`),
+  CONSTRAINT `Ticket_ibfk_1` FOREIGN KEY (`TripID`) REFERENCES `Trip` (`TripID`),
+  CONSTRAINT `Ticket_ibfk_2` FOREIGN KEY (`Owner_NID`) REFERENCES `Person` (`NID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,16 +186,17 @@ DROP TABLE IF EXISTS `Trip`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Trip` (
-  `TrainID` int(11) NOT NULL,
-  `DepartureTime` TIME NOT NULL,
-  `ArrivalTime` TIME NOT NULL,
   `TripID` int(11) NOT NULL AUTO_INCREMENT,
-  `sourceStation` int(11) NOT NULL,
-  `destinationStation` int(11) NOT NULL,
+  `DepartureTime` time NOT NULL,
+  `ArrivalTime` time NOT NULL,
+  `StationID` int(11) NOT NULL,
+  `TOStationID` int(11) NOT NULL,
   PRIMARY KEY (`TripID`),
-  KEY `sourceStation` (`sourceStation`),
-  KEY `destinationStation` (`destinationStation`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  KEY `StationID` (`StationID`),
+  KEY `TOStationID` (`TOStationID`),
+  CONSTRAINT `Trip_ibfk_1` FOREIGN KEY (`StationID`) REFERENCES `Station` (`StationID`),
+  CONSTRAINT `Trip_ibfk_2` FOREIGN KEY (`TOStationID`) REFERENCES `Station` (`StationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,8 +209,27 @@ LOCK TABLES `Trip` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping routines for database '4098422_capitol'
+-- Table structure for table `User`
 --
+
+DROP TABLE IF EXISTS `User`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `User` (
+  `NID` bigint(20) NOT NULL,
+  PRIMARY KEY (`NID`),
+  CONSTRAINT `User_ibfk_1` FOREIGN KEY (`NID`) REFERENCES `Person` (`NID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `User`
+--
+
+LOCK TABLES `User` WRITE;
+/*!40000 ALTER TABLE `User` DISABLE KEYS */;
+/*!40000 ALTER TABLE `User` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -303,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-08 22:50:20
+-- Dump completed on 2022-05-14 23:34:44
