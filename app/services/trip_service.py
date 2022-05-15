@@ -38,3 +38,10 @@ def get_trips_rows():
         trips[i] = list(trips[i])
         trips[i].append(strSeats)
     return trips
+
+def get_schedule():
+    cur = db_conn.cursor()
+    cur.execute("SELECT T.TripID, T.DepartureDate, S1.Sname, S2.Sname, T.DepartureTime, T.ArrivalTime FROM Trip T, Station S1, Station S2 WHERE (T.StationID=S1.StationID AND T.TOStationID=S2.StationID)")
+    trips = cur.fetchall()
+    cur.close()
+    return trips
