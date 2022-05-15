@@ -213,7 +213,7 @@ class Train_Seats extends HTMLElement {
         let _list = this.getAttribute("dis");
         if (_list) {
             _list.split(" ").forEach(id => {
-                document.getElementById(id).setAttribute("", true);
+                document.getElementById(id).setAttribute("disabled", true);
             });
         }
     }

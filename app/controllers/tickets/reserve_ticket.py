@@ -17,10 +17,9 @@ def view_trips():
     trips = trip_service.get_all_trips()
     for i in range(len(trips)):
         bkSeats = trip_service.get_booked_seats(trips[i][0])
-        strSeats = " ".join(str(x[0]) for x in bkSeats)
+        strSeats = " ".join(str(trips[i][0]) + "-" + str(x[0]) for x in bkSeats)
         trips[i] = list(trips[i])
         trips[i].append(strSeats)
-        print(trips[i])
         
     return render_template('resrveTicket.html', trips=trips)
 

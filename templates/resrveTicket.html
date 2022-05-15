@@ -107,7 +107,7 @@
                     <td>
                         <button class="btn btn-outline-success btn-sm" type="button" data-toggle="collapse" data-target="#{{ trip[0] }}" aria-expanded="false">Choose Seat</button>
                         <div class="collapse" id="{{ trip[0] }}">
-                            <train-seats trainID="{{ trip[0] }}" dis="{{ trip[0] }}-10A {{ trip[0] }}-5B" />
+                            <train-seats trainID="{{ trip[0] }}" dis="{{ trip[-1] }}" />
                         </div>
                     </td>
                 </tr>
