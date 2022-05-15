@@ -1,10 +1,16 @@
 from . import storage_wrapper
+from flask import session
+from datetime import datetime
 
 db_conn = storage_wrapper.db_conn
 
-# TODO: insert into db after getting user data
 def reserve_ticket(tripID, seatID):
-    pass
+    cur = db_conn.cursor()
+    cur.execute("SELECT NID FROM Person WHERE Pname = %s", (session['user'],))
+    NID = cur.fetchone()[0]
+    cur.execute("INSERT INTO Ticket (Price, TDate, TripID, Owner_NID) VALUES (%s, %s)", (250, datetime.now(), tripID, NID))
+    cur.commit()
+    cur.close()
 
 def get_all_tickets():
     cur = db_conn.cursor()
@@ -19,7 +25,7 @@ def delete_ticket(ticketID):
     db_conn.commit()
     cur.close()
     
-def get_ticket_data(ticketID):
+def get_ticket(ticketID):
     cur = db_conn.cursor()
     cur.execute("SELECT * FROM Ticket WHERE Ticket_ID = %s", (ticketID,))
     ticket_data = cur.fetchone()
