@@ -19,8 +19,8 @@ def choose_type(record):
                 return 3
     return 0
 
-def get_credientials(username , password):
+def get_credientials(username):
         cur = db_conn.cursor()
-        cur.execute('SELECT * FROM Person WHERE Email=%s AND Ppassword=%s', (username, password))
+        cur.execute('SELECT * FROM Person WHERE Email=%s', (username, ))
         record = cur.fetchone()
         return record
