@@ -32,3 +32,20 @@ def get_ticket_by_id(ticketID):
     ticket = cur.fetchone()
     cur.close()
     return ticket
+
+
+
+def sum_tickets_by_month(year=2022):
+    query = """
+        SELECT MONTH(TDate), SUM(Price)
+        FROM Ticket
+        WHERE YEAR(TDate) >= %s 
+        GROUP BY MONTH(TDate)
+    """
+    revenue_per_month = [0 for _ in range(12)]
+    
+    cursor = db_conn.cursor()
+    cursor.execute(query, [year])
+    accum_tickets = cursor.fetchall()
+    cursor.close()
+    return accum_tickets
