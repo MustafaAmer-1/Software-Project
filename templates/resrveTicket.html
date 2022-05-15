@@ -37,10 +37,10 @@
                 <div class="form-group col">
                     <label for="source-station">Source Station</label>
                     <select class="form-control custom-select mr-sm-2" id="source-station" name="source" required>
-                    <option disabled selected value="">Choose...</option>
-                    <option value="1">Cairo</option>
-                    <option value="2">Alex</option>
-                    <option value="3">Aswan</option>
+                    <option disabled selected hidden value="">Choose...</option>
+                    {% for station in stations %}
+                        <option value="{{ station[0] }}">{{ station[1] }}</option>
+                    {% endfor %}
                 </select>
                     <div class="invalid-feedback">
                         Please Choose Source Station.
@@ -50,10 +50,10 @@
                 <div class="form-group col">
                     <label for="distnation-station">Distnation Station</label>
                     <select class="form-control custom-select mr-sm-2" id="distnation-station" name="distnation" required>
-                    <option disabled selected value="">Choose...</option>
-                    <option value="1">Cairo</option>
-                    <option value="2">Alex</option>
-                    <option value="3">Aswan</option>
+                    <option disabled selected hidden value="">Choose...</option>
+                    {% for station in stations %}
+                        <option value="{{ station[0] }}">{{ station[1] }}</option>
+                    {% endfor %}
                 </select>
                     <div class="invalid-feedback">
                         Please Choose Distnation Station.
