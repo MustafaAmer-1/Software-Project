@@ -2,7 +2,6 @@ from . import storage_wrapper
 
 db_conn = storage_wrapper.db_conn
 
-# TODO: insert into db after getting user data
 def register_user(NID, full_name, phone_no, email, DOB, gender, password):
     cur = db_conn.cursor()
     cur.execute("SELECT * FROM Person WHERE NID = %s", (NID, ))

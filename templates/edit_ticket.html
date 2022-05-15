@@ -38,10 +38,13 @@
                 <div class="form-group col">
                     <label for="source-station">Source Station</label>
                     <select class="form-control custom-select mr-sm-2" id="source-station" required>
-                    <option disabled selected value="">Choose...</option>
-                    <option value="1">Cairo</option>
-                    <option value="2">Alex</option>
-                    <option value="3">Aswan</option>
+                    <option disabled selected hidden value="">Choose...</option>
+                    {% for station in stations %}
+                        <option {% if ticket_data['source'] == station[0] %}
+                            selected
+                        {% endif %}
+                        value="{{ station[0] }}">{{ station[1] }}</option>
+                    {% endfor %}
                 </select>
                     <div class="invalid-feedback">
                         Please Choose Source Station.
@@ -51,10 +54,13 @@
                 <div class="form-group col">
                     <label for="distnation-station">Distnation Station</label>
                     <select class="form-control custom-select mr-sm-2" id="distnation-station" required>
-                    <option disabled selected value="">Choose...</option>
-                    <option value="1">Cairo</option>
-                    <option value="2">Alex</option>
-                    <option value="3">Aswan</option>
+                    <option disabled selected hidden value="">Choose...</option>
+                    {% for station in stations %}
+                        <option {% if ticket_data['dist'] == station[0] %}
+                            selected
+                        {% endif %}
+                        value="{{ station[0] }}">{{ station[1] }}</option>
+                    {% endfor %}
                 </select>
                     <div class="invalid-feedback">
                         Please Choose Distnation Station.
@@ -65,17 +71,17 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="departure-date">Departure Date</label>
-                    <input type="date" class="form-control" id="departure-date" required>
+                    <input type="date" value="{{ ticket_data['date'] }}" class="form-control" id="departure-date" required>
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="from-time">From Time</label>
-                    <input type="time" class="form-control" id="from-time" required>
+                    <input type="time" value="{{ ticket_data['from'] }}" class="form-control" id="from-time" required>
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="to-date">To Time</label>
-                    <input type="time" class="form-control" id="to-date" required>
+                    <input type="time" value="{{ ticket_data['to'] }}" class="form-control" id="to-date" required>
                 </div>
             </div>
 
@@ -97,48 +103,22 @@
                 </tr>
             </thead>
             <tbody>
+                
+                {% for trip in trips %}
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row">{{ trip[0] }}</th>
+                    <td>{{ trip[1] }}</td>
+                    <td>{{ trip[2] }}</td>
+                    <td>{{ trip[3] }}</td>
                     <td>
-                        <button class="btn btn-outline-success btn-sm" type="button" data-toggle="collapse" data-target="#1" aria-expanded="false">Choose Seat</button>
-
-                        <div class="collapse" id="1">
-                            <train-seats trainID="1"/>
+                        <button class="btn btn-outline-success btn-sm" type="button" data-toggle="collapse" data-target="#{{ trip[0] }}" aria-expanded="false">Choose Seat</button>
+                        <div class="collapse" id="{{ trip[0] }}">
+                            <train-seats trainID="{{ trip[0] }}" dis="{{ trip[-1] }}" />
                         </div>
-
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                        <button class="btn btn-outline-success btn-sm" type="button" data-toggle="collapse" data-target="#2" aria-expanded="false">Choose Seat</button>
-
-                        <div class="collapse" id="2">
-                            <train-seats trainID="2"/>
-                        </div>
-
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>
-                        <button class="btn btn-outline-success btn-sm" type="button" data-toggle="collapse" data-target="#3" aria-expanded="false">Choose Seat</button>
-
-                        <div class="collapse" id="3">
-                            <train-seats trainID="3"/>
-                        </div>
-
-                    </td>
-                </tr>
+                {% endfor %}
+                
             </tbody>
         </table>
     </div>

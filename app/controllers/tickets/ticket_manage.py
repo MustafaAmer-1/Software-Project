@@ -30,10 +30,3 @@ def delete_ticket():
     ticketID = request.form['ticketID']
     ticket_service.delete_ticket(ticketID)
     return redirect('/ticket_manage')
-
-@ticket_manage.route('/edit_ticket', methods=['POST'])
-def edit_ticket():
-    ticketID = request.form['ticketID']
-    ticket_data = ticket_service.get_ticket_data(ticketID)
-    return render_template('edit_ticket.html', ticket_data=ticket_data)
-    

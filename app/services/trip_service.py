@@ -17,6 +17,13 @@ def get_trips(source, distnation, departure_date, from_time, to_time):
     cur.close()
     return trips
 
+def get_trip(tripID):
+    cur = db_conn.cursor()
+    cur.execute('SELECT * FROM Trip WHERE TripID=%s' , (tripID , ))
+    trip = cur.fetchone()
+    cur.close()
+    return trip
+
 def delete_trip(tripID):
     cur = db_conn.cursor()
     cur.execute('delete from Trip where TripID=%s' , (tripID , ))
