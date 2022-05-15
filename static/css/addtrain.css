@@ -1,0 +1,115 @@
+body{
+
+background-color: rgb(235, 240, 245);
+ 
+
+   background-size: 100%;
+}
+
+
+.add-form {
+    background: rgb(206, 227, 245);
+    box-sizing: border-box;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.4);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
+    margin: 55px auto;
+    padding: 15px;
+    width: 600px;
+  }
+
+  .edit-form {
+    background: rgb(206, 227, 245);
+    box-sizing: border-box;
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.4);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;  
+    margin: 55px auto;
+    padding: 15px;
+    width: 1000px;
+  }
+
+
+  .field-row {
+    position: relative;
+    width: 100%;
+ 
+  }
+
+  .form-label {
+    display: inline-block;
+    font-size: 17px;
+    margin: 0 5px 5px 0;
+    text-align:left;
+    width: 150px;
+  }
+  .field {
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 300px;
+  }
+  .field.field-short {
+    width: 70px;
+  }
+
+  
+  .message {
+    display:inline-block;
+  }
+  :required + .message::before {
+    content: "* ";
+  }
+
+  .text-field:focus:required:valid {
+    outline: rgb(4, 2, 60) solid 2px;
+  }
+  .text-field:focus:required:invalid {
+    outline: orange solid 2px;
+  }
+
+
+  .form-button {
+    background: rgb(10, 78, 142);   
+    border: none;
+    border-radius: 0;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+  }
+
+  .gr-bg{
+    background: rgb(252,205,128);
+    background: rgb(10, 78, 142);  
+}
+
+.form-title{
+    padding: 12px;
+    text-align: center;
+    position: relative;
+}
+.form-title h2{
+    color: #041946;
+}
+
+
+  .form-title .user-icon{
+    position: absolute;
+    font-size: 42px;
+    color: rgb(246, 239, 239);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    border-radius: 45px;
+    top: -25px;
+    left: -35px;
+}
+
+.form-button:hover{
+    opacity: 0.7;
+    transition: .3s;
+}
