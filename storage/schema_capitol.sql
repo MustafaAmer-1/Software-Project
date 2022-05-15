@@ -134,7 +134,7 @@ DROP TABLE IF EXISTS `Station`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Station` (
   `StationID` int(11) NOT NULL,
-  `Sname` varchat(20) NOT NULL,
+  `Sname` varchar(20) NOT NULL,
   PRIMARY KEY (`StationID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
