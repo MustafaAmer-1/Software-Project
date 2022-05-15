@@ -104,7 +104,7 @@ DROP TABLE IF EXISTS `Seat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Seat` (
-  `SeatID` int(11) NOT NULL,
+  `SeatID` varchar(10) NOT NULL,
   `CarNo` int(11) NOT NULL,
   `TripID` int(11) NOT NULL,
   `Ticket_ID` int(11) NOT NULL,

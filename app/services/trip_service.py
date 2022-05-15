@@ -22,4 +22,10 @@ def delete_trip(tripID):
     cur.execute('delete from Trip where TripID=%s' , (tripID , ))
     db_conn.commit()
     cur.close()
-    
+
+def get_booked_seats(tripID):
+    cur = db_conn.cursor()
+    cur.execute('SELECT SeatID FROM Seat WHERE TripID=%s' , (tripID , ))
+    seats = cur.fetchall()
+    cur.close()
+    return seats
