@@ -12,6 +12,8 @@ from app.controllers.Session.logout import logout_manage
 
 from app.controllers.trips.schedule import schedule_manage
 
+from app.controllers.Statistics.statistics import statistics_manage
+
 APP = Flask(__name__)
 APP.secret_key = 'secret'
 APP.register_blueprint(reserve_ticket)
@@ -20,6 +22,6 @@ APP.register_blueprint(ticket_manage)
 APP.register_blueprint(schedule_manage)
 APP.register_blueprint(login_manage)
 APP.register_blueprint(logout_manage)
-
+APP.register_blueprint(statistics_manage)
 if __name__ == "__main__":
     APP.run(debug=True)
