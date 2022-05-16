@@ -10,5 +10,5 @@ logout_manage = Blueprint('logout_manage', __name__)
 @logout_manage.route('/logout')
 def logout():
     session.pop('loggedin' , None)
-    session.pop('username' , None)
+    session.pop('id' , None)
     return redirect('/login')
