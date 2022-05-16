@@ -79,7 +79,7 @@ CREATE TABLE `Person` (
   `NID` bigint(20) NOT NULL,
   `Pname` varchar(120) NOT NULL,
   `Phone_No` int(11) NOT NULL,
-  `Email` varchar(120) NOT NULL,
+  `Email` varchar(120) NOT NULL UNIQUE,
   `DOB` date NOT NULL,
   `Gender` tinyint(1) NOT NULL,
   `Ppassword` varchar(120) NOT NULL,
