@@ -6,8 +6,7 @@ db_conn = storage_wrapper.db_conn
 
 def reserve_ticket(tripID, seatID):
     cur = db_conn.cursor()
-    cur.execute("SELECT NID FROM Person WHERE Pname = %s", (session['user'],))
-    NID = cur.fetchone()[0]
+    NID = session('id')
     cur.execute("INSERT INTO Ticket (Price, TDate, TripID, Owner_NID) VALUES (%s, %s)", (250, datetime.now(), tripID, NID))
     cur.commit()
     cur.close()

@@ -20,7 +20,7 @@ def login():
             if (record and password == record[6]):
                 type = choose_type(record[0])
                 if (type == 1):
-                    session['username'] = record[1]
+                    session['id'] = record[0]
                     session['loggedin'] = True
                     return redirect('/manager_dashboard')
             else:
