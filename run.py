@@ -16,6 +16,10 @@ from app.controllers.Statistics.statistics import statistics_manage
 
 from app.controllers.tickets.edit_ticket import edit_ticket
 
+from app.controllers.trips.add_trip import add_trip_manage
+
+from app.controllers.index import index_manage
+
 APP = Flask(__name__)
 APP.secret_key = 'secret'
 APP.register_blueprint(reserve_ticket)
@@ -26,6 +30,8 @@ APP.register_blueprint(login_manage)
 APP.register_blueprint(logout_manage)
 APP.register_blueprint(statistics_manage)
 APP.register_blueprint(edit_ticket)
+APP.register_blueprint(add_trip_manage)
+APP.register_blueprint(index_manage)
 
 if __name__ == "__main__":
     APP.run(debug=True)
