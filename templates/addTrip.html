@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet"  href= "../static/addtrain.css"> 
+
+<link rel="stylesheet"  href= "../static/homepageadm.css"> 
+  <title>Add Trip</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+   <ul id="menu">
+      
+      <button onclick="history.back()" class="buttonback" ><i class="fa fa-angle-double-left"></i> Go Back</button>
+
+      <li >
+        <input id="check01" type="checkbox" name="menu"/>
+        <label for="check01" class = "navbar">
+          <div class="form-title2">
+              <div class="user-icon2 gr-bg2">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                    
+              </div>
+              <div>Username
+              </div>
+           </div>
+
+        </label>
+
+
+
+        <ul class="submenu" >
+          <li><a href="ManagerDashboard.html">Home</a></li>
+          <li><a href=" {{  url_for('logout' ) }}" >Logout</a></li>
+        </ul>
+      </lable>
+    </ul>
+
+    <form class="add-form" action='/add_trip' method = "POST">
+        <div class="form-title">
+            <div class="user-icon gr-bg">
+             <i class="fa fa-train" aria-hidden="true"></i>
+            </div>
+            <h2>Add Trip</h2>
+         </div>
+
+        <div>
+         <label class="form-label" for="trainid">Trip ID</label>
+         <input type="text" id="trainid" name="TripID" class="field text-field" required placeholder="Enter Trip ID">
+           <!-- <span class="message"></span>-->
+        </div>
+        
+        
+        <div class="field-row">
+         <label class="form-label" for="sourcestation">Source Station</label>
+         <select class="form-dropdown field" required="" name="StationID">
+            <option value="1st " disabled selected> Choose Destination Station </option>
+            <option value="1"> Alexandria </option>
+            <option value="2"> Aswan </option>
+            <option value="3"> Asyut</option>
+            <option value="4"> Banha </option>
+            <option value="5"> Beni Suef </option>
+            <option value="6"> Cairo</option>
+            <option value="7"> Damnhour </option>
+            <option value="8"> Damnietta </option>
+            <option value="9"> El Esmailiyah </option>
+            <option value="10"> El Fayoum </option>
+            <option value="11"> El Mahalael Kobra </option>
+            <option value="12"> El-Minia </option>
+            <option value="13"> EL-Minsoura </option>
+            <option value="14"> El-Zqazyq</option>
+            <option value="15"> Itai EL-Barud </option>
+            <option value="16"> Kafr El Sheikh </option>
+            <option value="17"> Luxor </option>
+            <option value="18"> Marsa Matrouh</option>
+            <option value="19"> Port Said </option>
+            <option value="20"> Qena </option>
+            <option value="21"> Shubare EL-Kheima </option>
+            <option value="22"> Sidi Gaber </option>
+            <option value="23"> Sohag </option>
+            <option value="24"> Suez</option>
+            <option value="25"> Tanta</option>
+          </select>
+            <!-- <span class="message"></span>-->
+         </div>
+
+         <div class="field-row">
+            <label class="form-label" for="DestinationStation">Destination Station</label>
+            <select class="form-dropdown field" required="" name="TOStationID">
+               <option value="1st " disabled selected> Choose Destination Station </option>
+               <option value="1"> Alexandria </option>
+               <option value="2"> Aswan </option>
+               <option value="3"> Asyut</option>
+               <option value="4"> Banha </option>
+               <option value="5"> Beni Suef </option>
+               <option value="6"> Cairo</option>
+               <option value="7"> Damnhour </option>
+               <option value="8"> Damnietta </option>
+               <option value="9"> El Esmailiyah </option>
+               <option value="10"> El Fayoum </option>
+               <option value="11"> El Mahalael Kobra </option>
+               <option value="12"> El-Minia </option>
+               <option value="13"> EL-Minsoura </option>
+               <option value="14"> El-Zqazyq</option>
+               <option value="15"> Itai EL-Barud </option>
+               <option value="16"> Kafr El Sheikh </option>
+               <option value="17"> Luxor </option>
+               <option value="18"> Marsa Matrouh</option>
+               <option value="19"> Port Said </option>
+               <option value="20"> Qena </option>
+               <option value="21"> Shubare EL-Kheima </option>
+               <option value="22"> Sidi Gaber </option>
+               <option value="23"> Sohag </option>
+               <option value="24"> Suez</option>
+               <option value="25"> Tanta</option>
+             </select>
+         </div>
+
+        <div class="field-row">
+           <label class="form-label" for="Arrivaltime">Arrival Time</label>
+           <input type="time" id="finish" class="field text-field" name="ArrivalTime" min="05:00" max="22:00" required>
+           <!-- <span class="message"></span>-->
+        </div>
+        <div class="field-row">
+         <label class="form-label" for="Depature">Depature Time</label>
+         <input type="time" id="Start" class="field text-field" name="DepartureTime" min="5:00" max="22:00" required>
+        </div>
+      </div>
+      <div class="field-row">
+       <label class="form-label" for="Depature">Depature Date</label>
+       <input type="date"  class="field text-field" name="DepartureDate"  required>
+      </div>
+ 
+        </div>
+        <div class="field-row">
+           <label class="form-label"></label>
+           <input type="submit"  class="form-button" value="Add">
+           <input type="reset" class="form-button" value="Reset">
+        </div>
+     </form>
+   
+
+
+
+
+
+</body>
+
+</html>
