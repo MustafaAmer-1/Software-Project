@@ -57,3 +57,8 @@ def add_trip(DepartureTime , DepartureDate , ArrivalTime , TripID , StationID , 
     cur = db_conn.cursor()
     cur.execute('INSERT INTO Trip (DepartureDate , DepartureTime,ArrivalTime,TripID,StationID,TOStationID) VALUES(%s,%s,%s,%s,%s,%s)' , ( DepartureDate , DepartureTime , ArrivalTime , TripID , StationID , TOStationID))
     db_conn.commit()
+
+def delete_trip(TripID):  
+    cur = db_conn.cursor()
+    cur.execute('delete  from Trip where TripID=%s' , (int(TripID) ,  ))
+    db_conn.commit()
