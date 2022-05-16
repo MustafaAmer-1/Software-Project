@@ -1,11 +1,13 @@
-body{
-
+body {
     background-color: rgb(235, 240, 245);
     background-size: 100%;
 }
 
+a {
+    margin-bottom: 30px;
+}
 
-.codehim-form{
+.codehim-form {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     max-width: 400px;
     min-height: 400px;
@@ -13,72 +15,76 @@ body{
     background: rgb(206, 227, 245);
     box-shadow: 4px 2px 16px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
-    margin:  75px auto 0 auto;
+    margin: 75px auto 0 auto;
     padding: 35px;
     color: #414141;
-        
 }
-.cm-input{
+
+.cm-input {
     display: block;
     box-sizing: border-box;
     padding: 10px;
-    width: 100%; 
+    width: 100%;
     margin: 14px auto;
     border-radius: 20px;
-    border: 1px solid #ccc;    
+    border: 1px solid #ccc;
 }
-.cm-input:focus{
+
+.cm-input:focus {
     outline: 0;
     border-color: #414141;
-    
 }
-.cm-input:invalid{
+
+.cm-input:invalid {
     border-color: #e41b17;
-    
-    
 }
 
-a{
-    color:white;
-    text-decoration:none;
+a {
+    color: white;
+    text-decoration: none;
 }
 
-
-.btn-login{
-    display:block;
+.btn-login {
+    display: block;
     width: 100%;
     padding: 10px;
     border: 0;
     color: #fff;
     border-radius: 20px;
-    cursor:pointer;
-    
+    cursor: pointer;
 }
-.btn-login:focus{
+
+.btn-login:focus {
     outline: 0;
 }
 
-.btn-login:hover{
+.btn-login:hover {
     opacity: 0.7;
     transition: .3s;
 }
 
+
 /* Gradient Background */
-.gr-bg{
-    background: rgb(252,205,128);
-    background: rgb(10, 78, 142);    
+
+.gr-bg {
+    background: rgb(252, 205, 128);
+    background: rgb(10, 78, 142);
 }
 
- /* For, title */
- .form-title{
+
+/* For, title */
+
+.form-title {
     padding: 12px;
     text-align: center;
     position: relative;
 }
-.form-title h2{
+
+.form-title h2 {
     color: #041946;
 }
-.form-title .user-icon{
+
+.form-title .user-icon {
     position: absolute;
     font-size: 42px;
     color: rgb(246, 239, 239);
@@ -90,11 +96,11 @@ a{
     top: -50px;
     left: -45px;
 }
-.msg{
-        display: block;
-        box-sizing: border-box;
-        width: 100%; 
-        margin: 14px auto;
-        text-align-last: center;  
-    
+
+.msg {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 14px auto;
+    text-align-last: center;
 }

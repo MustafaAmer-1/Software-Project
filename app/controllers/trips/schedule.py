@@ -7,7 +7,7 @@ from flask import render_template, flash, redirect, url_for, request, Blueprint
 
 schedule_manage = Blueprint('schedule_manage', __name__)
 
-@schedule_manage.route('/schedule', methods=['GET', 'POST'])
+@schedule_manage.route('/schedule', methods=['GET'])
 def schedule():
     trips = trip_service.get_schedule()
-    return render_template('schedule.html', trips=trips)
+    return render_template('Schedule.html', trips=trips)
