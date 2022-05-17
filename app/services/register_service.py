@@ -14,6 +14,7 @@ def register_user(NID, full_name, phone_no, email, DOB, gender, password):
         raise ValueError("Email already exists")
     else:
         cur.execute("INSERT INTO Person (NID, Pname, Phone_no, Email, DOB, Gender, Ppassword) VALUES (%s, %s, %s, %s, %s, %s, %s)", (NID, full_name, phone_no, email, DOB, gender, password))
+        cur.execute("INSERT INTO User (NID) VALUES (%s)", (NID,))
         db_conn.commit()
     cur.close()
 

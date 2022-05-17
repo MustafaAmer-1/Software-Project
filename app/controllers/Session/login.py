@@ -19,17 +19,13 @@ def login():
         if record:
             if (record and password == record[6]):
                 type = choose_type(record[0])
+                session['id'] = record[1]
+                session['loggedin'] = True
                 if (type == 1):
-                    session['id'] = record[1]
-                    session['loggedin'] = True
                     return redirect('/homepageadm')
                 elif(type == 2):
-                    session['id'] = record[1]
-                    session['loggedin'] = True
                     return redirect('/homepageclerk')
                 elif(type == 3):
-                    session['id'] = record[1]
-                    session['loggedin'] = True
                     return redirect('/homepageuser')
                 
             else:

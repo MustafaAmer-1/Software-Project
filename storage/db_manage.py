@@ -16,5 +16,6 @@ def connect():
         user=mysqlConfig['user'],
         passwd=mysqlConfig['pass'],
         database=mysqlConfig['db'],
-        port=mysqlConfig['port']
+        port=mysqlConfig['port'],
+        autocommit=True
     )

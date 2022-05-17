@@ -19,7 +19,7 @@ def register():
         gender = request.form.get('Gender')
         try:
             register_service.register_user(iNID, Username, phone, email, dateofBirth, gender, password)
-            return redirect(url_for('login'))
+            return redirect("/login")
         except ValueError as e:
             return render_template('register.html', error = str(e))
     return render_template('register.html')

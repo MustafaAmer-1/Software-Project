@@ -10,20 +10,20 @@ manage_dashboard = Blueprint('manage_dashboard', __name__)
 
 @manage_dashboard.route('/homepageadm')
 def homepageadm():
-    if not session.get("id"):
+    if not session.get("id", 0):
         return redirect("/login")
     return render_template('ManagerDashboard.html' , username = session["id"])
 
 
 @manage_dashboard.route('/homepageuser')
 def homepageuser():
-    if not session.get("id"):
+    if not session.get("id", 0):
         return redirect("/login")
     return render_template('UserDashboard.html' , username = session["id"])
 
 
 @manage_dashboard.route('/homepageclerk')
 def homepageclerk():
-    if not session.get("id"):
+    if not session.get("id", 0):
         return redirect("/login")
     return render_template('ClerkDashboard.html' , username = session["id"])
