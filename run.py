@@ -26,6 +26,8 @@ from app.controllers.trips.add_trip import add_trip_manage
 
 from app.controllers.trips.trip_manage import trip_manage
 
+from app.controllers.employee.employee_manage import employee_manage
+
 APP = Flask(__name__)
 APP.secret_key = 'secret'
 APP.register_blueprint(reserve_ticket)
@@ -41,6 +43,7 @@ APP.register_blueprint(index_manage)
 APP.register_blueprint(manage_dashboard)
 APP.register_blueprint(add_trip_manage)
 APP.register_blueprint(trip_manage)
+APP.register_blueprint(employee_manage)
 
 if __name__ == "__main__":
     APP.run(debug=True)

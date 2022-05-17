@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet"  href= "../static/css/addClerk.css"> 
+  <title >Add Clerk</title>
+
+
+</head>
+
+<body>
+
+
+
+   
+
+   <ul id="menu">
+      
+      <button onclick="history.back()" class="buttonback" ><i class="fa fa-angle-double-left"></i> Go Back</button>
+
+      <li >
+        <input id="check01" type="checkbox" name="menu"/>
+        <label for="check01" class = "navbar">
+          <div class="form-title2">
+              <div class="user-icon2 gr-bg2">
+                      <i class="fa fa-user" aria-hidden="true"></i>
+                    
+              </div>
+              <div>Username
+              </div>
+           </div>
+
+        </label>
+
+
+
+        <ul class="submenu">
+          <li><a href="ManagerDashboard.html">Home</a></li>
+          <li><a href="login.html" >Logout</a></li>
+        </ul>
+      </lable>
+    </ul>
+
+
+
+
+                  <!--Registry form details--> 
+    <form class="add-form" action='/add_clerk' method = "POST">
+        <div class="form-title">
+            <div class="user-icon gr-bg">
+             <i class="fa fa-train" aria-hidden="true"></i>
+            </div>
+            <h2>Add New Clerk</h2>
+         </div>
+
+        <div class="field-row">
+           <label class="form-label" for="clerk name">User Name</label>
+           <input type="text" name="clerk name" class="field text-field" required="" placeholder="Please enter your Username">
+        </div>
+                    <!--For national ID input--> 
+
+          <div class="field-row">
+           <label class="form-label" for="ID">National ID</label>
+           <input type="text" name="NID" class="field text-field" required="" placeholder="Ex: 12345678912345">
+          </div>
+          
+          
+                    <!--For DoB input--> 
+        <div class="field-row">
+            <label class="form-label cf" for="start">Date of Birth:</label>
+            <input type="date"  class="field text-field" name="BD" >
+         </div>
+        
+        
+                    <!--For gender input--> 
+
+        <div class="field-row">
+            <label class="form-label cf" for="gender">Gender</label>
+            <select class="form-dropdown field" required="" name= "Gender">
+             <option value="" disabled selected> Choose your type  </option>
+             <option value="0"> Male </option>
+             <option value="1"> Female </option>
+          </select>
+         </div>
+      
+                    <!--For Email input--> 
+
+          <div class="field-row">
+           <label class="form-label" for="Email">E-mail</label>
+           <input type="text" name="Email" class="field text-field" required="" placeholder="Ex: someone@anymail.com">
+          </div>
+          
+                    <!--For Phone number input--> 
+
+           <div class="field-row">
+           <label class="form-label" for="num">Phone Number</label>
+          <input type="tel" name="phone" class="field text-field" name="phone"placeholder="Ex: 01xxxxxxxxx">
+          </div>
+          
+                    <!--For working station input-->
+                    
+                    <div class="field-row">
+                        <label class="form-label" for="Station">Working Station</label>
+                        <select class="form-dropdown field" required="" name="station">
+                           <option value=" " disabled selected hidden> Choose Working Station </option>
+                           {% for station in stations %}
+                                <option value="{{ station[0] }}">{{ station[1] }}</option>
+                           {% endfor %}
+                         </select>
+                     </div>
+
+         <div class="field-row">
+         <label class="form-label" for="finish">Password</label>
+         <input type="password" class="field text-field" name="password" required placeholder="Enter Password">
+         </div>
+         
+         
+                      <!--For working time input--> 
+
+        <div class="field-row">
+           <label class="form-label" for="Start">Works from</label>
+           <input type="time" id="Start" class="field text-field" name="start" required>
+        </div>
+        <div class="field-row">
+           <label class="form-label" for="finish">Works to</label>
+           <input type="time" id="finish" class="field text-field" name="end" required>
+         </div>
+                     <!--Two add and reset buttons--> 
+        
+        <div class="field-row">
+           <label class="form-label"></label>
+           <button tybe="submit"  class="form-button">Add Clerk</button>
+           <input type="reset"  class="form-button" value="Reset">
+        </div>
+     </form>
+   
+
+</body></html>
