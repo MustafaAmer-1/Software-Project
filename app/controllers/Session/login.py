@@ -27,6 +27,10 @@ def login():
                     session['id'] = record[1]
                     session['loggedin'] = True
                     return redirect('/homepageclerk')
+                elif(type == 3):
+                    session['id'] = record[1]
+                    session['loggedin'] = True
+                    return redirect('/homepageuser')
                 
             else:
                 error = "Invalid Password Please Try again"

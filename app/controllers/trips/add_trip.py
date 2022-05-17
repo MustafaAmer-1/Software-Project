@@ -21,5 +21,5 @@ def add_trip_view():
             TripID = request.form.get('TripID')
             StationID = request.form.get('StationID')
             TOStationID = request.form.get('TOStationID')
-            add_trip(DepartureTime , DepartureDate , ArrivalTime , TripID , StationID , TOStationID)
+            trip_service.add_trip(DepartureTime , DepartureDate , ArrivalTime , TripID , StationID , TOStationID)
     return render_template("addTrip.html")
