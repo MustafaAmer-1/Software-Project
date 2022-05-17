@@ -20,6 +20,8 @@ from app.controllers.tickets.history import history
 
 from app.controllers.index import index_manage
 
+from app.controllers.Dashboards.Manage_Dashboard import manage_dashboard
+
 APP = Flask(__name__)
 APP.secret_key = 'secret'
 APP.register_blueprint(reserve_ticket)
@@ -32,6 +34,7 @@ APP.register_blueprint(statistics_manage)
 APP.register_blueprint(edit_ticket)
 APP.register_blueprint(history)
 APP.register_blueprint(index_manage)
+APP.register_blueprint(manage_dashboard)
 
 if __name__ == "__main__":
     APP.run(debug=True)

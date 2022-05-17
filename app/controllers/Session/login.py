@@ -20,9 +20,14 @@ def login():
             if (record and password == record[6]):
                 type = choose_type(record[0])
                 if (type == 1):
-                    session['id'] = record[0]
+                    session['id'] = record[1]
                     session['loggedin'] = True
-                    return redirect('/manager_dashboard')
+                    return redirect('/homepageadm')
+                elif(type == 2):
+                    session['id'] = record[1]
+                    session['loggedin'] = True
+                    return redirect('/homepageclerk')
+                
             else:
                 error = "Invalid Password Please Try again"
         
