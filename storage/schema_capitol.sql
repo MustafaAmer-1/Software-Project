@@ -42,6 +42,7 @@ CREATE TABLE `Clerk` (
 
 LOCK TABLES `Clerk` WRITE;
 /*!40000 ALTER TABLE `Clerk` DISABLE KEYS */;
+INSERT INTO `Clerk` VALUES (1,'04:42:00','08:42:00',1542);
 /*!40000 ALTER TABLE `Clerk` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,6 +66,7 @@ CREATE TABLE `Manager` (
 
 LOCK TABLES `Manager` WRITE;
 /*!40000 ALTER TABLE `Manager` DISABLE KEYS */;
+INSERT INTO `Manager` VALUES (456789);
 /*!40000 ALTER TABLE `Manager` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,6 +95,7 @@ CREATE TABLE `Person` (
 
 LOCK TABLES `Person` WRITE;
 /*!40000 ALTER TABLE `Person` DISABLE KEYS */;
+INSERT INTO `Person` VALUES (20,'sakfk',2021,'scv','2002-12-05',0,'0210'),(554,'sdfsg',215425,'dff','2004-09-28',0,'dfgd'),(1542,'amer',542156,'clerk@clerk.com','2022-05-10',0,'123'),(123456,'user',123456,'user@user.com','2022-05-10',0,'123'),(456789,'manager',123456,'manager@manager.com','2002-12-05',0,'123'),(789456,'wrere',4854,'rere@rere.com','2022-05-04',0,'123');
 /*!40000 ALTER TABLE `Person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -122,6 +125,7 @@ CREATE TABLE `Seat` (
 
 LOCK TABLES `Seat` WRITE;
 /*!40000 ALTER TABLE `Seat` DISABLE KEYS */;
+INSERT INTO `Seat` VALUES ('10B',10,874,18),('2B',10,514,16),('4C',10,456,20),('5B',10,515,17),('9D',10,515,19);
 /*!40000 ALTER TABLE `Seat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,10 +137,10 @@ DROP TABLE IF EXISTS `Station`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Station` (
-  `StationID` int(11) NOT NULL,
-  `Sname` varchar(20) NOT NULL,
+  `StationID` int(11) NOT NULL AUTO_INCREMENT,
+  `Sname` varchar(50) NOT NULL,
   PRIMARY KEY (`StationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +149,7 @@ CREATE TABLE `Station` (
 
 LOCK TABLES `Station` WRITE;
 /*!40000 ALTER TABLE `Station` DISABLE KEYS */;
+INSERT INTO `Station` VALUES (1,'Alexandria'),(2,'Assiut'),(3,'Aswan'),(4,'Beheira'),(5,'Bani Suef'),(6,'Cairo'),(7,'Daqahliya'),(8,'Damietta'),(9,'Fayyoum'),(10,'Gharbiya'),(11,'Giza'),(12,'Helwan'),(13,'Ismailia'),(14,'Kafr El Sheikh'),(15,'Luxor'),(16,'Marsa Matrouh'),(17,'Minya'),(18,'Monofiya'),(19,'New Valley'),(20,'North Sinai'),(21,'Port Said'),(22,'Qalioubiya'),(23,'Qena'),(24,'Red Sea'),(25,'Sharqiya'),(26,'Sohag'),(27,'South Sinai'),(28,'Suez'),(29,'Tanta');
 /*!40000 ALTER TABLE `Station` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +171,7 @@ CREATE TABLE `Ticket` (
   KEY `Owner_NID` (`Owner_NID`),
   CONSTRAINT `Ticket_ibfk_1` FOREIGN KEY (`TripID`) REFERENCES `Trip` (`TripID`),
   CONSTRAINT `Ticket_ibfk_2` FOREIGN KEY (`Owner_NID`) REFERENCES `Person` (`NID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +180,7 @@ CREATE TABLE `Ticket` (
 
 LOCK TABLES `Ticket` WRITE;
 /*!40000 ALTER TABLE `Ticket` DISABLE KEYS */;
+INSERT INTO `Ticket` VALUES (16,250,'2022-05-19',514,123456),(17,250,'2022-05-19',515,123456),(18,250,'2022-05-19',874,123456),(19,250,'2022-05-19',515,123456),(20,250,'2022-05-19',456,123456);
 /*!40000 ALTER TABLE `Ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +203,7 @@ CREATE TABLE `Trip` (
   KEY `TOStationID` (`TOStationID`),
   CONSTRAINT `Trip_ibfk_1` FOREIGN KEY (`StationID`) REFERENCES `Station` (`StationID`),
   CONSTRAINT `Trip_ibfk_2` FOREIGN KEY (`TOStationID`) REFERENCES `Station` (`StationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=875 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,6 +212,7 @@ CREATE TABLE `Trip` (
 
 LOCK TABLES `Trip` WRITE;
 /*!40000 ALTER TABLE `Trip` DISABLE KEYS */;
+INSERT INTO `Trip` VALUES (456,'2022-05-21','04:44:00','07:44:00',1,6),(514,'2022-05-20','11:45:00','18:45:00',17,26),(515,'2022-05-23','06:44:00','08:44:00',6,9),(874,'2022-05-30','06:45:00','10:45:00',5,16);
 /*!40000 ALTER TABLE `Trip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,6 +236,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` VALUES (123456);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

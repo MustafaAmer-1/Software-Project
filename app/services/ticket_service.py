@@ -6,9 +6,10 @@ db_conn = storage_wrapper.db_conn
 
 def reserve_ticket(tripID, seatID):
     cur = db_conn.cursor()
-    NID = session('id')
-    cur.execute("INSERT INTO Ticket (Price, TDate, TripID, Owner_NID) VALUES (%s, %s)", (250, datetime.now(), tripID, NID))
-    cur.commit()
+    NID = session['id']
+    cur.execute("INSERT INTO Ticket (Price, TDate, TripID, Owner_NID) VALUES (%s, %s, %s, %s)", (250, datetime.now(), tripID, NID))
+    cur.execute("INSERT INTO Seat (SeatID, CarNo, TripID, Ticket_ID) VALUES (%s, %s, %s, %s)", (seatID, 10, tripID, cur.lastrowid))
+    db_conn.commit()
     cur.close()
 
 def get_all_tickets():

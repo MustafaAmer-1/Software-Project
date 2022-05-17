@@ -90,6 +90,8 @@
             <thead class="thead-dark">
                 <tr>
                     <th class="col-md-1" scope="col">Train ID</th>
+                    <th scope="col">Source Station</th>
+                    <th scope="col">Distnation Station</th>
                     <th scope="col">Date</th>
                     <th scope="col">Departure Time</th>
                     <th scope="col">Expected Arrival Time</th>
@@ -101,6 +103,8 @@
                 {% for trip in trips %}
                 <tr>
                     <th scope="row">{{ trip[0] }}</th>
+                    <td>{{ trip[4] }}</td>
+                    <td>{{ trip[5] }}</td>
                     <td>{{ trip[1] }}</td>
                     <td>{{ trip[2] }}</td>
                     <td>{{ trip[3] }}</td>

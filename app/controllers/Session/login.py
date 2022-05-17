@@ -19,7 +19,7 @@ def login():
         if record:
             if (record and password == record[6]):
                 type = choose_type(record[0])
-                session['id'] = record[1]
+                session['id'] = record[0]
                 session['loggedin'] = True
                 if (type == 1):
                     return redirect('/homepageadm')

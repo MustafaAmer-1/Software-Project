@@ -33,5 +33,5 @@ def search_trip():
 def reserve():
     tripID, seatID = request.form['seat'].split('-')
     ticket_service.reserve_ticket(tripID, seatID)
-    return redirect('/')
+    return redirect('/homepageuser')
     

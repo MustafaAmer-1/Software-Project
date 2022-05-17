@@ -1,4 +1,5 @@
 from . import storage_wrapper
+from . import stations_service
 
 db_conn = storage_wrapper.db_conn
 
@@ -44,6 +45,8 @@ def get_trips_rows():
         strSeats = " ".join(str(trips[i][0]) + "-" + str(x[0]) for x in bkSeats)
         trips[i] = list(trips[i])
         trips[i].append(strSeats)
+        trips[i][4] = stations_service.get_station_name(trips[i][4])
+        trips[i][5] = stations_service.get_station_name(trips[i][5])
     return trips
 
 def get_schedule():
